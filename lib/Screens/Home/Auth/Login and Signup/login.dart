@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
               ),
               CustomText(
                 text: 'It’s great to see you again.',
-                color: AppColors.subtitleColor,
+                color: AppColors.gray1,
               ),
               2.h.height,
 
@@ -78,7 +78,6 @@ class _LoginState extends State<Login> {
                           : controller.passwordShow.value = true;
                     },
                     child: Icon(
-                      color: AppColors.gray1,
                       controller.passwordShow.value == false
                           ? Icons.remove_red_eye
                           : Icons.visibility_off,
@@ -116,7 +115,7 @@ class _LoginState extends State<Login> {
                 backColour:
                     controller.isEmailValid && controller.isPasswordValid
                         ? AppColors.black
-                        : AppColors.gray2,
+                        : AppColors.gray1,
                 onTap: () {
                   Navigator.pushNamed(context, AppRoutes.bottomNavBar);
                 },

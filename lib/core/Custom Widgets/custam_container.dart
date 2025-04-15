@@ -13,6 +13,7 @@ class CustomContainer extends StatelessWidget {
   final bool? shadow;
   final DecorationImage? imageDecoration;
   final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
 
   CustomContainer({
     this.height,
@@ -27,6 +28,7 @@ class CustomContainer extends StatelessWidget {
     this.shadow,
     this.imageDecoration,
     this.margin,
+    this.padding,
   });
 
   @override
@@ -37,35 +39,36 @@ class CustomContainer extends StatelessWidget {
         height: height,
         width: width,
         margin: margin,
+        padding: padding,
         decoration: BoxDecoration(
-          boxShadow: shadow == true
-              ? [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1), 
-                    spreadRadius: 2, 
-                    blurRadius: 3, 
-                    offset: const Offset(0, 1), 
-                  ),
-                ]
-              : null,
+          boxShadow:
+              shadow == true
+                  ? [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.1),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: const Offset(0, 1),
+                    ),
+                  ]
+                  : null,
           color: grading ? null : col,
-          gradient: grading
-              ? const LinearGradient(
-                  colors: [
-                    // AppColours.gradient1,
-                    // AppColours.gradient2,
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomLeft,
-                )
-              : null,
+          gradient:
+              grading
+                  ? const LinearGradient(
+                    colors: [
+                      // AppColours.gradient1,
+                      // AppColours.gradient2,
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomLeft,
+                  )
+                  : null,
           border: borders == true ? Border.all(color: borderCol!) : null,
           borderRadius: BorderRadius.circular(cir!),
-          image: imageDecoration, 
+          image: imageDecoration,
         ),
-        child: Center(
-          child: child,
-        ),
+        child: Center(child: child),
       ),
     );
   }

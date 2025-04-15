@@ -4,6 +4,12 @@ class AppImages {
   static String elements = '${images_path}Element.png';
   static String element1 = '${images_path}Element (1).png';
   static String onBordingImage = '${images_path}onbordingImage.png';
+  static String image1 = '${images_path}image1.png';
+  static String image2 = '${images_path}image2.png';
+  static String image3 = '${images_path}image3.png';
+  static String image4 = '${images_path}image4.png';
+  static String image5 = '${images_path}image5.png';
+  static String image6 = '${images_path}image6.png';
   //SVG Picture
   static String svg_path = 'assets/images/';
   static String rightArrow = '${svg_path}arrow-right.svg';

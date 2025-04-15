@@ -6,7 +6,8 @@ import 'package:flutter_svg/svg.dart';
 class AccountListtile extends StatelessWidget {
   final String image;
   final String title;
-  const AccountListtile({super.key, required this.image, required this.title});
+    final VoidCallback onTap;
+  const AccountListtile({super.key, required this.image, required this.title, required this.onTap,});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class AccountListtile extends StatelessWidget {
         size: 16,
         color: AppColors.gray1,
       ),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }

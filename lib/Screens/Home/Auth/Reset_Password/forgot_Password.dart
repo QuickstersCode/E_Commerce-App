@@ -66,7 +66,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 onChanged: (_) => validateInput(),
               ),
               15.h.height,
-
               CustomMainButton(
                 title: 'Send Code',
                 onTap: () {

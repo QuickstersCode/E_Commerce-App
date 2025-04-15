@@ -55,7 +55,6 @@ class ResetPassword extends StatelessWidget {
                           : controller.passwordShow.value = true;
                     },
                     child: Icon(
-                      color: AppColors.gray1,
                       controller.passwordShow.value == false
                           ? Icons.remove_red_eye
                           : Icons.visibility_off,
@@ -77,7 +76,6 @@ class ResetPassword extends StatelessWidget {
                           : controller.confirmPasswordShow.value = true;
                     },
                     child: Icon(
-                      color: AppColors.gray1,
                       controller.confirmPasswordShow.value == false
                           ? Icons.remove_red_eye
                           : Icons.visibility_off,

@@ -1,4 +1,5 @@
-import 'package:e_commerce_app/Screens/Home/Account/account_listtile.dart';
+import 'package:e_commerce_app/Routes/app_routes.dart';
+import 'package:e_commerce_app/Screens/Home/Account%20pages/Account%20Page/account_listtile.dart';
 import 'package:e_commerce_app/Screens/Home/Widgets/custom_appbar.dart';
 import 'package:e_commerce_app/Screens/Home/Widgets/divider.dart';
 import 'package:e_commerce_app/core/Custom%20Widgets/custom_text.dart';
@@ -33,6 +34,7 @@ class AccountPage extends StatelessWidget {
               child: AccountListtile(
                 image: AppImages.myOrder,
                 title: "My Orders",
+                onTap: () {},
               ),
             ),
             CustomDivider(thick: 1.h),
@@ -43,21 +45,25 @@ class AccountPage extends StatelessWidget {
                   AccountListtile(
                     image: AppImages.myDetails,
                     title: "My Details",
+                    onTap: () {},
                   ),
                   CustomDivider(),
                   AccountListtile(
                     image: AppImages.addressBook,
                     title: "Address Book",
+                    onTap: () {},
                   ),
                   CustomDivider(),
                   AccountListtile(
                     image: AppImages.paymentMethods,
                     title: "Payment Methods",
+                    onTap: () {},
                   ),
                   CustomDivider(),
                   AccountListtile(
                     image: AppImages.notification,
                     title: "Notifications",
+                    onTap: () {},
                   ),
                 ],
               ),
@@ -68,11 +74,18 @@ class AccountPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: Column(
                 children: [
-                  AccountListtile(image: AppImages.fAQs, title: "FAQs"),
+                  AccountListtile(
+                    image: AppImages.fAQs,
+                    title: "FAQs",
+                    onTap: () {},
+                  ),
                   CustomDivider(),
                   AccountListtile(
                     image: AppImages.helpCenter,
                     title: "Help Center",
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.helpCenterPage);
+                    },
                   ),
                 ],
               ),

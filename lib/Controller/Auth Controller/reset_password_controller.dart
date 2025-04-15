@@ -9,4 +9,5 @@ class ResetPasswordController extends GetxController {
 
   RxBool passwordShow = false.obs;
   RxBool confirmPasswordShow = false.obs;
+  RxBool isEmailValid = true.obs;
 }

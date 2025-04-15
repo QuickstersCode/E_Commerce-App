@@ -1,6 +1,8 @@
-import 'package:e_commerce_app/Screens/Home/Account/account_page.dart';
-import 'package:e_commerce_app/Screens/Home/Search%20Page/search.dart';
-import 'package:e_commerce_app/Screens/Home/home_page.dart';
+import 'package:e_commerce_app/Screens/Home/Account%20pages/Account%20Page/account_page.dart';
+import 'package:e_commerce_app/Screens/Home/Cart%20Pages/my_cart.dart';
+import 'package:e_commerce_app/Screens/Home/Saved%20Pages/ssave.dart';
+import 'package:e_commerce_app/Screens/Home/Search%20Pages/search.dart';
+import 'package:e_commerce_app/Screens/Home/Home%20Pages/home_page.dart';
 import 'package:e_commerce_app/core/Custom%20Widgets/custom_text.dart';
 import 'package:e_commerce_app/core/utils/Themes/app_color.dart';
 import 'package:e_commerce_app/core/utils/app_images.dart';
@@ -21,8 +23,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> pages = [
     HomePage(),
     SearchPage(),
-    Center(child: Text('Saved Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Cart Page', style: TextStyle(fontSize: 24))),
+    SavedPage(),
+    CartPage(),
     AccountPage(),
   ];
 

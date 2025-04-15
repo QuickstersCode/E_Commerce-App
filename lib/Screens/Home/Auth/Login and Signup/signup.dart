@@ -11,23 +11,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class Login extends StatefulWidget {
-  Login({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   final AuthController controller = Get.put(AuthController());
 
-  void validateInput() {
+  validateInput() {
     setState(() {
       controller.isEmailValid = RegExp(
         r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
-      ).hasMatch(controller.loginEmail.text.trim());
+      ).hasMatch(controller.signupEmail.text.trim());
       controller.isPasswordValid =
-          controller.loginPassword.text.trim().length >= 6;
+          controller.signupPassword.text.trim().length >= 6;
     });
   }
 
@@ -35,42 +35,50 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 5.w),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              7.h.height,
+              6.h.height,
+
               CustomText(
-                text: 'Login to your account',
+                text: 'Create an account',
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
+
               CustomText(
-                text: 'It’s great to see you again.',
-                color: AppColors.subtitleColor,
+                text: 'Let’s create your account.',
+                color: AppColors.gray1,
               ),
               2.h.height,
 
               CustomTextField(
+                titles: 'Full Name',
+                controller: controller.fullName,
+                hintText: "Enter your full name",
+              ),
+              1.h.height,
+
+              CustomTextField(
                 titles: 'Email',
-                controller: controller.loginEmail,
+                controller: controller.signupEmail,
                 hintText: "Enter your email address",
                 isValid: controller.isEmailValid,
                 onChanged: (_) => validateInput(),
               ),
-              2.h.height,
+              1.h.height,
 
               Obx(
                 () => CustomTextField(
                   obscur: controller.passwordShow.value,
                   titles: 'Password',
-                  controller: controller.loginPassword,
-                  hintText: "Enter your password",
+                  controller: controller.signupPassword,
                   isValid: controller.isPasswordValid,
                   onChanged: (_) => validateInput(),
+                  hintText: "Enter your password",
                   lasticon: GestureDetector(
                     onTap: () {
                       controller.passwordShow.value == true
@@ -78,7 +86,6 @@ class _LoginState extends State<Login> {
                           : controller.passwordShow.value = true;
                     },
                     child: Icon(
-                      color: AppColors.gray1,
                       controller.passwordShow.value == false
                           ? Icons.remove_red_eye
                           : Icons.visibility_off,
@@ -87,36 +94,51 @@ class _LoginState extends State<Login> {
                 ),
               ),
               2.h.height,
+
               RichText(
                 text: TextSpan(
-                  style: TextStyle(fontSize: 13, color: Colors.black),
+                  style: TextStyle(fontSize: 14, color: Colors.black),
                   children: [
-                    const TextSpan(text: "Forgot your password? "),
+                    const TextSpan(text: "By signing up you agree to our "),
                     TextSpan(
-                      text: "Reset your password",
+                      text: "Terms",
                       style: const TextStyle(
                         decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.bold,
                       ),
-                      recognizer:
-                          TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.pushNamed(
-                                context,
-                                AppRoutes.forgotPassword,
-                              );
-                            },
+
+                      recognizer: TapGestureRecognizer()..onTap = () {},
+                    ),
+                    TextSpan(text: ", "),
+                    TextSpan(
+                      text: "Privacy",
+                      style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,
+                      ),
+
+                      recognizer: TapGestureRecognizer()..onTap = () {},
+                    ),
+                    TextSpan(text: " and "),
+                    TextSpan(
+                      text: "Cookie Use",
+                      style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,
+                      ),
+
+                      recognizer: TapGestureRecognizer()..onTap = () {},
                     ),
                   ],
                 ),
               ),
-              4.h.height,
+              2.h.height,
               MainCustomButton(
-                title: "Login",
                 backColour:
                     controller.isEmailValid && controller.isPasswordValid
                         ? AppColors.black
-                        : AppColors.gray2,
+                        : AppColors.gray1,
+                title: "Create an Account",
                 onTap: () {
                   Navigator.pushNamed(context, AppRoutes.bottomNavBar);
                 },
@@ -140,6 +162,7 @@ class _LoginState extends State<Login> {
                 title: "Sign Up with Google",
                 image: AppImages.google,
                 onTap: () {},
+                borderColor: AppColors.gray2,
               ),
               2.h.height,
               MainCustomButton(
@@ -165,9 +188,9 @@ class _LoginState extends State<Login> {
                 text: TextSpan(
                   style: TextStyle(fontSize: 14, color: Colors.black),
                   children: [
-                    const TextSpan(text: "Don’t have an account? "),
+                    const TextSpan(text: "Already have an account? "),
                     TextSpan(
-                      text: " Join",
+                      text: " Log In",
                       style: const TextStyle(
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.bold,
@@ -175,7 +198,9 @@ class _LoginState extends State<Login> {
                       recognizer:
                           TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.pop(context);
+                              Navigator.pushNamed(context, AppRoutes.login);
+                              controller.isEmailValid = false;
+                              controller.isPasswordValid = false;
                             },
                     ),
                   ],

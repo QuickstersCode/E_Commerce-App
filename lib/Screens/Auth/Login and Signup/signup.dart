@@ -11,13 +11,30 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
   @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  final AuthController controller = Get.put(AuthController());
+
+  validateInput() {
+    setState(() {
+      controller.isEmailValid = RegExp(
+        r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
+      ).hasMatch(controller.signupEmail.text.trim());
+      controller.isPasswordValid =
+          controller.signupPassword.text.trim().length >= 6;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final AuthController controller = Get.put(AuthController());
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 5.w),
         child: SingleChildScrollView(
@@ -34,7 +51,7 @@ class SignUp extends StatelessWidget {
 
               CustomText(
                 text: 'Let’s create your account.',
-                color: AppColors.gray1,
+                color: AppColors.subtitleColor,
               ),
               2.h.height,
 
@@ -49,6 +66,8 @@ class SignUp extends StatelessWidget {
                 titles: 'Email',
                 controller: controller.signupEmail,
                 hintText: "Enter your email address",
+                isValid: controller.isEmailValid,
+                onChanged: (_) => validateInput(),
               ),
               1.h.height,
 
@@ -57,6 +76,8 @@ class SignUp extends StatelessWidget {
                   obscur: controller.passwordShow.value,
                   titles: 'Password',
                   controller: controller.signupPassword,
+                  isValid: controller.isPasswordValid,
+                  onChanged: (_) => validateInput(),
                   hintText: "Enter your password",
                   lasticon: GestureDetector(
                     onTap: () {
@@ -65,6 +86,7 @@ class SignUp extends StatelessWidget {
                           : controller.passwordShow.value = true;
                     },
                     child: Icon(
+                      color: AppColors.gray1,
                       controller.passwordShow.value == false
                           ? Icons.remove_red_eye
                           : Icons.visibility_off,
@@ -113,8 +135,11 @@ class SignUp extends StatelessWidget {
               ),
               2.h.height,
               MainCustomButton(
+                backColour:
+                    controller.isEmailValid && controller.isPasswordValid
+                        ? AppColors.black
+                        : AppColors.gray2,
                 title: "Create an Account",
-                backColour: AppColors.gray1,
                 onTap: () {
                   Navigator.pushNamed(context, AppRoutes.bottomNavBar);
                 },
@@ -175,6 +200,8 @@ class SignUp extends StatelessWidget {
                           TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.pushNamed(context, AppRoutes.login);
+                              controller.isEmailValid = false;
+                              controller.isPasswordValid = false;
                             },
                     ),
                   ],
