@@ -1,13 +1,15 @@
 ## E_Commerce App Screens
 ![Cover](https://github.com/user-attachments/assets/1bb0fff1-27f2-4252-b6ec-6d43e85cee7b)
-</div>
-<div align="center">
-    <img src="https://github.com/user-attachments/assets/8da57f1f-a270-43b8-8160-80ad5e37b277" width="180">
-    <img src="https://github.com/user-attachments/assets/717a2ea6-4781-47c1-9028-253d8df9ab7f" width="180">
-    <img src="https://github.com/user-attachments/assets/8c721eb6-1382-4fe2-a3d6-df646e75e76c" width="180">
-    <img src="https://github.com/user-attachments/assets/257cd074-e76e-4f81-b9cc-c69474d77124" width="180">
-  
-</div>
+
+
+<table align="center">
+  <tr>
+   <td><img src="https://github.com/user-attachments/assets/8da57f1f-a270-43b8-8160-80ad5e37b277" width="180"></td>
+    <td><img src="https://github.com/user-attachments/assets/717a2ea6-4781-47c1-9028-253d8df9ab7f" width="180"></td>
+    <td><img src="https://github.com/user-attachments/assets/8c721eb6-1382-4fe2-a3d6-df646e75e76c" width="180"></td>
+    <td><img src="https://github.com/user-attachments/assets/257cd074-e76e-4f81-b9cc-c69474d77124" width="180"></td>
+  </tr>
+    </table>
 <div align="center">
     <img src="https://github.com/user-attachments/assets/0ec10e9c-7dfc-402b-8aca-7207d325394e" width="180">
     <img src="https://github.com/user-attachments/assets/a1859b7c-5259-4d32-8d12-70212e0e1cf7" width="180">
